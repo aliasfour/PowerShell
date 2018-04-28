@@ -11,3 +11,5 @@ function Run-AsUser{
 
 #$cred = get-credential
 #Run-AsUser "powershell.exe" $cred
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+            Write-Warning "This script should be ran with administrative priviliges."
